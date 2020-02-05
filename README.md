@@ -1,4 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Search Github Users
+This is a ReactJS Project which uses pure ReactJS Components and CSS to create the GUI for a search application.
+The search application uses AXIOS to make calls to the https://api.github.com/users/ endpoint to fectch users and display their info such as Username, Followers, Company, Public Repos etc....
+
 
 ## Available Scripts
 
