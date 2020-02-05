@@ -2,6 +2,8 @@
 This is a ReactJS Project which uses pure ReactJS Components and CSS to create the GUI for a search application.
 The search application uses AXIOS to make calls to the https://api.github.com/users/ endpoint to fectch users and display their info such as Username, Followers, Company, Public Repos etc....
 
+No state management yet, but will add Context API or Redux soon to manage state
+
 
 ## Available Scripts
 
