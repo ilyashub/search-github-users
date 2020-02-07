@@ -1,12 +1,5 @@
-import React, {
-	Fragment,
-	Component,
-} from 'react'
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-} from 'react-router-dom'
+import React, {Fragment, Component} from 'react'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import './App.css'
 import Navbar from './components/layout/Navbar'
 import Users from './components/users/Users'
@@ -25,20 +18,6 @@ class App extends Component {
 		loading: false,
 		alert: null,
 	}
-
-	// async componentDidMount() {
-	// 	this.setState({ loading: false });
-
-	// 	console.log(process.env.REACT_APP_GITHUB_CLIENT_ID);
-
-	// 	const res = await axios.get(
-	// 		// 'https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_ID}'
-	// 		'https://api.github.com/users?client_id'
-	// 	);
-
-	// 	this.setState({ users: res.data, loading: false });
-	// 	console.log(res.data);
-	// }
 
 	//Search Gibhub Users
 	searchUsers = async (text) => {
@@ -94,31 +73,17 @@ class App extends Component {
 
 	setAlert = (msg, type) => {
 		this.setState({alert: {msg, type}})
-		setTimeout(
-			() =>
-				this.setState({alert: null}),
-			1000
-		)
+		setTimeout(() => this.setState({alert: null}), 1000)
 	}
 
 	render() {
-		const {
-			users,
-			user,
-			repos,
-			loading,
-		} = this.state
+		const {users, user, repos, loading} = this.state
 		return (
 			<Router>
 				<div className='App'>
-					<Navbar
-						title='Search Github Users'
-						icon='fab fa-twitter'
-					/>
+					<Navbar title='Search Github Users' icon='fab fa-twitter' />
 					<div className='container'>
-						<Alert
-							alert={this.state.alert}
-						/>
+						<Alert alert={this.state.alert} />
 						<Switch>
 							<Route
 								exact
@@ -126,46 +91,25 @@ class App extends Component {
 								render={(props) => (
 									<Fragment>
 										<Search
-											searchUsers={
-												this.searchUsers
-											}
-											clearUsers={
-												this.clearUsers
-											}
-											showClear={
-												users.length > 0
-													? true
-													: false
-											}
-											setAlert={
-												this.setAlert
-											}
+											searchUsers={this.searchUsers}
+											clearUsers={this.clearUsers}
+											showClear={users.length > 0 ? true : false}
+											setAlert={this.setAlert}
 										/>
-										<Users
-											loading={loading}
-											users={users}
-										/>
+										<Users loading={loading} users={users} />
 									</Fragment>
 								)}
 							/>
-							<Route
-								exact
-								path='/about'
-								component={About}
-							/>
+							<Route exact path='/about' component={About} />
 
 							<Route
 								exact
-								path='/user/:login'
+								path={`/user/:login`}
 								render={(props) => (
 									<User
 										{...props}
-										getUser={
-											this.getUser
-										}
-										getUserRepos={
-											this.getUserRepos
-										}
+										getUser={this.getUser}
+										getUserRepos={this.getUserRepos}
 										user={user}
 										loading={loading}
 										repos={repos}
